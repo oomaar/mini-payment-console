@@ -127,3 +127,29 @@ xpay-console/
 
 ### The app simulates a mini payment console without the heavy infrastructure — just simple CRUD on a local file (data/payments.json).
 
+## Deliverables
+## Git repo
+- This repository, with README.md for setup, run, finishedparts.
+
+## Technical documentation
+### Key Decisions
+- Use of payments.json as a local DB (simple persistence).
+- Split UI into modular components (HomePageTable, HomePageFilters, etc.).
+- Next.js App Router with Server Actions (createPayment, updatePayment).
+
+### Data Flow
+- Merchant creates payment → written to payments.json.
+- Payment detail page displays from file.
+- Public link → customer marks Paid/Cancel → updates JSON file.
+- Home page list always reads fresh from JSON.
+
+### Assumptions
+- Single-user environment (no concurrency handling).
+- Currency fixed to EGP.
+- Payments stored in cents (integer).
+- No authentication/authorization.
+
+### Task estimate
+- T-shirt size: M
+- Time-based: 5 hours total (coding + styling + docs)
+
