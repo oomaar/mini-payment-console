@@ -2,11 +2,11 @@ import { Payment } from "@/lib/db";
 import "./HomePageTable.css";
 
 type HomePageTableProps = {
-  filtered: Payment[];
+  payments: Payment[];
 };
 
 export function HomePageTable(props: HomePageTableProps) {
-  const { filtered } = props;
+  const { payments } = props;
 
   return (
     <div className="table-container">
@@ -20,7 +20,7 @@ export function HomePageTable(props: HomePageTableProps) {
           </tr>
         </thead>
         <tbody>
-          {filtered.map((p) => (
+          {payments.map((p) => (
             <tr key={p.id}>
               <td>
                 <a href={`/payments/${p.id}`}>{p.merchantOrderId}</a>
