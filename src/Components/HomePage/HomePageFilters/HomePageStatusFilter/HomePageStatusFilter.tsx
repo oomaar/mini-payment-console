@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Filters } from "../../HomePageContainer";
 import "./HomePageStatusFilter.css";
 
@@ -25,8 +25,22 @@ export function HomePageStatusFilter(props: HomePageStatusFilterProps) {
 
   const [showStatusFilter, setShowStatusFilter] = useState(false);
 
+  const dropdownContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onElseWhereClick = (e: MouseEvent) => {
+      if (dropdownContainerRef.current?.contains(e.target as Node) === false) {
+        setShowStatusFilter(false);
+      }
+    };
+
+    document.body.addEventListener("click", onElseWhereClick);
+
+    return () => document.body.removeEventListener("click", onElseWhereClick);
+  }, [showStatusFilter]);
+
   return (
-    <div className="status-filter-container">
+    <div className="status-filter-container" ref={dropdownContainerRef}>
       <button
         onClick={() => setShowStatusFilter(!showStatusFilter)}
         className="status-filter-button"
