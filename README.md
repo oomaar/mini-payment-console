@@ -5,7 +5,7 @@ It simulates a merchant creating and tracking payments, and customers marking th
 
 ---
 
-## 🚀 Features
+## Features
 - Create a payment (`/new`)
 - List payments with search + status filter (`/`)
 - View payment details (`/payments/[id]`)
@@ -17,7 +17,7 @@ It simulates a merchant creating and tracking payments, and customers marking th
 
 ---
 
-## 🛠 Setup & Run
+## Setup & Run
 
 ### 1. Clone and install
 ```bash
