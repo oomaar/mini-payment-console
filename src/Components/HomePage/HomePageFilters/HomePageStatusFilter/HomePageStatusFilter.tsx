@@ -8,20 +8,22 @@ type HomePageStatusFilterProps = {
   onStatusSelect: (status: Filters["status"]) => void;
 };
 
+type statusFilterOption = {
+  label: string;
+  value: "all" | "pending" | "paid" | "canceled";
+};
+
+const statusFilterOptions: statusFilterOption[] = [
+  { label: "All", value: "all" },
+  { label: "Pending", value: "pending" },
+  { label: "Paid", value: "paid" },
+  { label: "Canceled", value: "canceled" },
+];
+
 export function HomePageStatusFilter(props: HomePageStatusFilterProps) {
   const { status, onStatusSelect } = props;
 
   const [showStatusFilter, setShowStatusFilter] = useState(false);
-
-  const options: {
-    label: string;
-    value: "all" | "pending" | "paid" | "canceled";
-  }[] = [
-    { label: "All", value: "all" },
-    { label: "Pending", value: "pending" },
-    { label: "Paid", value: "paid" },
-    { label: "Canceled", value: "canceled" },
-  ];
 
   return (
     <div className="status-filter-container">
@@ -38,7 +40,7 @@ export function HomePageStatusFilter(props: HomePageStatusFilterProps) {
         >{`>`}</span>
       </button>
       <ul className={`status-filter-list ${showStatusFilter ? "show" : ""}`}>
-        {options.map((option) => (
+        {statusFilterOptions.map((option) => (
           <li
             key={option.label}
             className={` ${status === option.value ? "active" : ""}`}
