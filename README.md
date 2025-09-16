@@ -110,3 +110,20 @@ xpay-console/
 - Amount is stored in cents (integer).
 - This project is not production-ready; it’s a simulation for demo/testing.
 
+## Notes on Requirements
+-This project intentionally skips real-world payment complexity to keep the exercise simple:
+
+### No idempotency
+- In real payment systems, repeated requests (e.g., clicking "Pay" twice) are guarded with an idempotency key so the charge only happens once.
+- Here, duplicate entries may be created in payments.json, and that’s fine for this assignment.
+
+### No HMAC
+- Payment providers usually sign requests/responses with an HMAC (Hash-based Message Authentication Code) to prove authenticity.
+- This project does not implement cryptographic signatures — it just reads/writes to the local JSON file.
+
+### No webhooks
+- Real providers send asynchronous notifications (webhooks) to update payment status (e.g., “Payment succeeded”).
+- Here, payment status is updated manually through the public payment page (Mark as Paid / Cancel buttons).
+
+### The app simulates a mini payment console without the heavy infrastructure — just simple CRUD on a local file (data/payments.json).
+
