@@ -1,0 +1,62 @@
+.status-filter-container {
+  width: 200px;
+  position: relative;
+}
+
+.status-filter-button {
+  width: 100%;
+  padding: 8px 16px;
+  background: var(--background);
+  border: 1px solid var(--border-color);
+  color: var(--foreground);
+  cursor: pointer;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-filter-button-arrow {
+  font-size: 20px;
+  font-weight: 700;
+  transform: rotate(90deg);
+  transition: all 0.3s ease;
+}
+
+.rotate-status-filter-button-arrow {
+  transform: rotate(-90deg);
+}
+
+.status-filter-list {
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  max-height: 0px;
+  overflow: hidden;
+  border-radius: 0px 0px 8px 8px;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 8px 0px rgba(255, 255, 255, 0.15);
+}
+
+.show {
+  max-height: 136px;
+  overflow: visible;
+}
+
+.status-filter-list li {
+  padding: 0.5rem 1rem;
+  background: var(--background);
+  cursor: pointer;
+  text-transform: capitalize;
+  list-style-type: none;
+  transition: all 0.3s ease;
+}
+
+.status-filter-list li:last-child {
+  border-radius: 0px 0px 8px 8px;
+}
+
+.status-filter-list li:hover,
+.status-filter-list li.active {
+  background: rgba(255, 255, 255, 0.1);
+}
