@@ -8,8 +8,9 @@ type PayPageProps = {
 
 export default async function PayPage(props: PayPageProps) {
   const { params } = props;
+  const { publicId } = await params;
 
-  const payment = await getPaymentByPublicId(params.publicId);
+  const payment = await getPaymentByPublicId(publicId);
 
   if (!payment)
     return (
@@ -41,7 +42,7 @@ export default async function PayPage(props: PayPageProps) {
               <form
                 action={async () => {
                   "use server";
-                  await markPaid(params.publicId);
+                  await markPaid(publicId);
                 }}
               >
                 <button type="submit">Mark Paid</button>
@@ -49,7 +50,7 @@ export default async function PayPage(props: PayPageProps) {
               <form
                 action={async () => {
                   "use server";
-                  await markCanceled(params.publicId);
+                  await markCanceled(publicId);
                 }}
               >
                 <button

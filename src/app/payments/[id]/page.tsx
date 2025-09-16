@@ -2,12 +2,17 @@ import { getPaymentById } from "@/lib/db";
 import CopyButton from "./CopyButton";
 import "./Payment.css";
 
-export default async function PaymentDetailsPage({
-  params,
-}: {
+type PaymentDetailsPageProps = {
   params: { id: string };
-}) {
-  const payment = await getPaymentById(params.id);
+};
+
+export default async function PaymentDetailsPage(
+  props: PaymentDetailsPageProps
+) {
+  const { params } = props;
+  const { id } = await params;
+
+  const payment = await getPaymentById(id);
   if (!payment) return <div>Payment not found.</div>;
 
   const publicUrl = `${
